@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "process.env.PORT",
+    origin: "process.env.PORT || 3001",
     methods: ["GET", "POST"],
   },
 });
@@ -32,6 +32,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
+server.listen(process.env.PORT || 3001, () => {
   console.log("SERVER RUNNING");
 });
